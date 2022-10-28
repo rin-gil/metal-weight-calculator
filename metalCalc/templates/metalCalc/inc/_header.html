@@ -1,0 +1,11 @@
+<header class="header">
+    <nav>
+        <ul class="nav-tabs">
+            {% for shape in shapes %}
+            <li class="nav-item">
+                <button class="nav-link" form="metals" type="submit" name="metal_shape" value="{{ shape.id }}"{% if shape.id == shape_selected %} disabled{% endif %}>{{ shape.shape_name }}</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

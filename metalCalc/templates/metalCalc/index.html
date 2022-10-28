@@ -1,0 +1,36 @@
+{% extends 'metalCalc/base.html' %}
+
+
+{% block title %}{{ page_info.title }}{% endblock %}
+
+
+{% block main %}
+<main class="main card">
+    <h1>{{ page_info.title }}</h1>
+    <div class="container fade">
+        <div class="column_left">
+            {% include 'metalCalc/inc/_drawings.html' %}
+        </div>
+        <div class="column_right">
+            {% include 'metalCalc/inc/_form-select-metals.html' %}
+            <br>
+            {% include 'metalCalc/inc/_form-calculator-fields.html' %}
+            <br>
+            {% if error_message %}<p class="text-danger">Проверьте правильность введенных данных!</p><br>{% endif %}
+            <div class="container">
+                <div class="column_left">
+                    <div class="form-floating" id="r">
+                        <input id="weight" type="text" class="form-control" readonly placeholder="Вес, кг" name="weight" value="{% if weight %}{{ weight }}{% else %}0.00{% endif %}" onFocus="this.select()">
+                        <label for="weight">Вес, кг</label>
+                    </div>
+                </div>
+                <div class="column_right">
+                    <div class="form-floating">
+                        <button class="btn" form="calculator" type="submit">РАССЧИТАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

@@ -1,0 +1,22 @@
+{% load static %}{% spaceless %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {% include 'metalCalc/inc/_favicons.html' %}
+    <script src="{% static 'js/script.min.js' %}"></script>
+    <link type="text/css" rel="stylesheet preload"  href="{% static 'css/reset.min.css' %}">
+    <link type="text/css" rel="stylesheet preload" href="{% static 'css/style.min.css' %}">
+    {% include 'metalCalc/inc/_meta-tags.html' %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="wrapper">
+    {% include 'metalCalc/inc/_header.html' %}
+    {% block main %}{% endblock %}
+    {% include 'metalCalc/inc/_footer.html' %}
+</div>
+</body>
+</html>{% endspaceless %}

@@ -11,16 +11,16 @@
 </p>
 
 <p align="right">
-    <a href="https://github.com/rin-gil/MetalWeightCalculator/blob/master/README.ru.md">Читать на русском</a>
+    <a href="https://github.com/rin-gil/MetalWeightCalculator/blob/master/README.md">Read English</a>
 </p>
 
-## Metal Weight Calculator
+## Калькулятор веса металла
 
-The application calculates the theoretical weight of rolled steel, based on the data entered by the user.
-A selection of different types of rolled metal products, metals and metal alloys is available.
-To try out the application, visit [metal-calc.mooo.com](https://metal-calc.mooo.com)
+Приложение выполняет расчет теоретического веса металлопроката, по данным, которые ввел пользователь.
+Доступен выбор различных видов металлопроката, металлов и металлических сплавов.
+Опробовать приложение в работе можно на сайте [metal-calc.mooo.com](https://metal-calc.mooo.com)
 
-### Installing
+### Установка
 
 ```
 git clone https://github.com/rin-gil/MetalWeightCalculator.git
@@ -31,21 +31,21 @@ pip install -r requirements.txt
 mv .env.dist .env
 ```
 
-### Setup and launch
+### Настройка и запуск
 
-* Run the application with the command `python3 manage.py runserver`
-* The application is now available in the browser at: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+* Запустите приложение командой `python3 manage.py runserver`
+* Теперь приложение доступно в браузере по адресу: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-### Screenshots
+### Скриншоты
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/rin-gil/MetalWeightCalculator/master/metalCalc/static/img/home_page.png" alt="Главный экран приложения">
 </p>
 
-### Developers
+### Разработчики
 
 * [Ringil](https://github.com/rin-gil)
 
 ### License
 
-Metal Weight Calculator is licensed under [MIT](https://github.com/rin-gil/MetalWeightCalculator/blob/master/LICENCE)
+Проект Калькулятор веса металла распространяется по лицензии [MIT](https://github.com/rin-gil/MetalWeightCalculator/blob/master/LICENCE)

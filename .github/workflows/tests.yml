@@ -26,6 +26,7 @@ jobs:
           if [ -f requirements-prod.txt ]; then pip install -r requirements-dev.txt; fi
       - name: Lint with pylint
         run: |
+          mv .env.dist .env
           pylint --recursive=y .
       - name: Test with mypy
         run: |

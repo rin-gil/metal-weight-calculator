@@ -11,7 +11,7 @@ suggestion-mode = true
 
 # Django
 load-plugins = ["pylint_django"]
-#django-settings-module =["app.settings"]
+django-settings-module = ["app.settings"]
 
 [tool.pylint.basic]
 argument-naming-style = "snake_case"

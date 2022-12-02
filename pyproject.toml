@@ -1,6 +1,6 @@
 [tool.pylint.main]
 fail-under = 10
-ignore = ["CVS"]
+ignore = ["CVS", "migrations.*", "manage.py"]
 ignore-patterns = ["^\\.#"]
 init-hook="import sys; sys.path.append('.')"
 jobs = 0
@@ -117,7 +117,7 @@ redefining-builtins-modules = ["six.moves", "past.builtins", "future.builtins", 
 
 [tool.mypy]
 python_version = "3.11"
-exclude = ["venv.*"]
+exclude = ["venv.*", "migrations.*", "manage.py"]
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true

@@ -14,7 +14,7 @@ env.read_env()
 SECRET_KEY: str = env.str("KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG: bool = True
+DEBUG: bool = False
 
 ALLOWED_HOSTS: list[str] = ["127.0.0.1"]
 
@@ -82,6 +82,33 @@ AUTH_PASSWORD_VALIDATORS: list = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "formatter": "verbose",
+            "filename": BASE_DIR / "metalCalculator.log",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
 
 # Internationalization
 LANGUAGE_CODE: str = "ru"

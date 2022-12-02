@@ -14,7 +14,7 @@ env.read_env()
 SECRET_KEY: str = env.str("KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG: bool = False
+DEBUG: bool = True
 
 ALLOWED_HOSTS: list[str] = ["127.0.0.1"]
 

@@ -9,6 +9,10 @@ persistent = true
 py-version = "3.11"
 suggestion-mode = true
 
+# Django
+load-plugins = ["pylint_django"]
+django-settings-module =["app.settings"]
+
 [tool.pylint.basic]
 argument-naming-style = "snake_case"
 attr-naming-style = "snake_case"

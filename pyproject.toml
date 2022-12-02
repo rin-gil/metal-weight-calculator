@@ -1,6 +1,6 @@
 [tool.pylint.main]
 fail-under = 10
-ignore = ["CVS", "migrations.*", "manage.py"]
+ignore = ["CVS", "venv", "migrations", "manage.py"]
 ignore-patterns = ["^\\.#"]
 init-hook="import sys; sys.path.append('.')"
 jobs = 0

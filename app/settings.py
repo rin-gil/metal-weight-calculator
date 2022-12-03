@@ -26,6 +26,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "metalCalc.apps.MetalCalcConfig",
 ]
 
@@ -114,6 +115,7 @@ LOGGING = {
 LANGUAGE_CODE: str = "ru"
 TIME_ZONE: str = "UTC"
 USE_I18N: bool = True
+USE_L10N: bool = True
 USE_TZ: bool = True
 
 # Static files (CSS, JavaScript, Images)

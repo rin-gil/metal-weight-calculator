@@ -1,26 +1,25 @@
 {% load static %}{% spaceless %}
-    {% load site_info %}
-    {% get_site_info as site_info %}
-    <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta http-equiv="refresh" content="5; url={% url 'home' %}">
-        {% include 'metalCalc/inc/_favicons.html' %}
-        <link type="text/css" rel="stylesheet" href="{% static 'css/reset.min.css' %}">
-        <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
-        <title>Страница не найдена</title>
-    </head>
-    <body>
-    <div class="wrapper">
-        <div style="text-align: center">
-            <h1>Страница не найдена</h1>
-            <p>Страница <b>https://{{ site_info.site_url }}/{{ wrong_url }}</b> не найдена на этом сайте.</p>
-            <p>Вы будете перенаправлены на главную страницу через 5 секунд.</p>
-        </div>
+{% load site_info %}
+{% get_site_info as site_info %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="5; url={% url 'home' %}">
+    {% include 'metalCalc/inc/_favicons.html' %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/reset.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Страница не найдена</title>
+</head>
+<body>
+<div class="wrapper">
+    <div style="text-align: center">
+        <h1>Страница не найдена</h1>
+        <p>Страница <b>https://{{ site_info.site_url }}/{{ wrong_url }}</b> не найдена на этом сайте.</p>
+        <p>Вы будете перенаправлены на главную страницу через 5 секунд.</p>
     </div>
-    </body>
-    </html>{% endspaceless %}
+</div>
+</body>
+</html>{% endspaceless %}

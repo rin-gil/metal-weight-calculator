@@ -6,6 +6,7 @@ from app.settings import ALLOWED_HOSTS
 
 from metal_calc.models import PageInfo
 
+
 register: template.Library = template.Library()
 
 

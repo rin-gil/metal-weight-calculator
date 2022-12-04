@@ -18,7 +18,7 @@ class MetalCalcHomeView(TemplateView):
 
     def get(self, request: WSGIRequest, **kwargs: Any) -> HttpResponse:
         """Displaying a page during a GET request"""
-        return render(request=request, template_name=self.template_name, context=default_context_data)
+        return render(request=request, template_name=self.template_name, context=self.context)
 
     def post(self, request: WSGIRequest) -> HttpResponse:
         """Displaying a page during a POST request"""

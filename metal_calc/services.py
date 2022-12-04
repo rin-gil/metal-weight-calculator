@@ -4,7 +4,7 @@ from typing import TypedDict
 
 from django.http import QueryDict
 
-from metal_calc.models import Metals, MetalGrade
+from metal_calc.models import MetalGrade, Metals, MetalShape
 
 
 class ContextData(TypedDict):
@@ -39,6 +39,37 @@ default_context_data: ContextData = {
 }
 
 
+def _parse_shape(shape: str | None) -> int:
+    """Checks the correctness of the selected metal shape"""
+    if shape in tuple(map(str, MetalShape.objects.values_list("id", flat=True))):
+        return int(shape)
+    return default_context_data["shape_selected"]
+
+
+def _parse_metal_type(metal_type: str | None) -> int:
+    """Checks the correctness of the selected metal type"""
+    if metal_type in tuple(map(str, Metals.objects.values_list("id", flat=True))):
+        return int(metal_type)
+    return default_context_data["metal_type_selected"]
+
+
+def _parse_metal_alloy(metal_alloy: str | None) -> int:
+    """Checks the correctness of the selected metal alloy"""
+    if metal_alloy in tuple(map(str, MetalGrade.objects.values_list("id", flat=True))):
+        return int(metal_alloy)
+    return default_context_data["metal_alloy_selected"]
+
+
+def _parse_value(checked_value: str | None) -> int:
+    """Checks if the values entered by the user are correct"""
+    if not checked_value:
+        return 0
+    try:
+        return int(checked_value)
+    except (TypeError, ValueError):
+        return 0
+
+
 def _calculate_weight_of_metal(volume: float, metal_type_selected: int, metal_alloy_selected: int) -> str:
     """Calculates the weight of the metal from the data entered by the user"""
     if metal_alloy_selected == 0:
@@ -46,24 +77,6 @@ def _calculate_weight_of_metal(volume: float, metal_type_selected: int, metal_al
     else:
         density = MetalGrade.objects.get(pk=metal_alloy_selected).density
     return f"{round(volume * density, 2):.2f}"
-
-
-def _get_int_or_default_value(checked_variable: str, default_value: int) -> int:
-    """
-    Checks if the values entered by the user are correct.
-    If the value can be converted to int type, it returns the converted value.
-    If not, it returns the value from the default variable.
-
-    :param checked_variable: checked value
-    :param default_value: default value
-    :return:
-    """
-    try:
-        result: int = int(checked_variable)
-    except (TypeError, ValueError):
-        return default_value
-    else:
-        return result
 
 
 def get_context_data_for_calculator_fields(request: QueryDict, context: ContextData) -> ContextData:
@@ -75,22 +88,17 @@ def get_context_data_for_calculator_fields(request: QueryDict, context: ContextD
     :return: dictionary with new values of fields, which will be displayed in the form on the site
     """
 
-    shape_selected: int = _get_int_or_default_value(checked_variable=request.get("metal_shape"), default_value=1)
-    metal_type_selected: int = _get_int_or_default_value(checked_variable=request.get("metal_type"), default_value=1)
-    metal_alloy_selected: int = _get_int_or_default_value(checked_variable=request.get("metal_alloy"), default_value=0)
+    shape_selected: int = _parse_shape(shape=request.get("metal_shape"))
+    metal_type_selected: int = _parse_metal_type(metal_type=request.get("metal_type"))
+    metal_alloy_selected: int = _parse_metal_alloy(metal_alloy=request.get("metal_alloy"))
 
-    context["shape_selected"] = shape_selected
-    context["metal_type_selected"] = metal_type_selected
-    context["metal_alloy_selected"] = metal_alloy_selected
-    context["error_message"] = False
-
-    width: int = _get_int_or_default_value(checked_variable=request.get("width"), default_value=0)
-    height: int = _get_int_or_default_value(checked_variable=request.get("height"), default_value=0)
-    s: int = _get_int_or_default_value(checked_variable=request.get("s"), default_value=0)
-    s2: int = _get_int_or_default_value(checked_variable=request.get("s2"), default_value=0)
-    diameter: int = _get_int_or_default_value(checked_variable=request.get("diameter"), default_value=0)
-    quantity: int = _get_int_or_default_value(checked_variable=request.get("quantity"), default_value=0)
-    length: int = _get_int_or_default_value(checked_variable=request.get("length"), default_value=0)
+    width: int = _parse_value(checked_value=request.get("width"))
+    height: int = _parse_value(checked_value=request.get("height"))
+    s: int = _parse_value(checked_value=request.get("s"))
+    s2: int = _parse_value(checked_value=request.get("s2"))
+    diameter: int = _parse_value(checked_value=request.get("diameter"))
+    quantity: int = _parse_value(checked_value=request.get("quantity"))
+    length: int = _parse_value(checked_value=request.get("length"))
 
     if shape_selected == 1:
         if width < s2 or height < (s * 2):
@@ -139,6 +147,9 @@ def get_context_data_for_calculator_fields(request: QueryDict, context: ContextD
         volume=volume, metal_type_selected=metal_type_selected, metal_alloy_selected=metal_alloy_selected
     )
 
+    context["shape_selected"] = shape_selected
+    context["metal_type_selected"] = metal_type_selected
+    context["metal_alloy_selected"] = metal_alloy_selected
     context["width"] = width
     context["height"] = height
     context["s"] = s

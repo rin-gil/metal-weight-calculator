@@ -1,15 +1,17 @@
 {% load static %}
-<meta name="description" content="{{ page_info.description }}">
-<meta name="keywords" content="{{ page_info.keywords }}">
+{% load site_info %}
+{% get_site_info as site_info %}
+<meta name="description" content="{{ site_info.description }}">
+<meta name="keywords" content="{{ site_info.keywords }}">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="{{ page_info.title }}">
-<meta property="og:description" content="{{ page_info.description }}">
-<meta property="og:image" content="https://{{ site_url }}{% static 'img/bg-meta.png' %}">
-<meta property="og:url" content="https://{{ site_url }}">
-<meta property="og:site_name" content="{{ page_info.title }}">
+<meta property="og:title" content="{{ site_info.title }}">
+<meta property="og:description" content="{{ site_info.description }}">
+<meta property="og:image" content="https://{{ site_info.site_url }}{% static 'img/bg-meta.png' %}">
+<meta property="og:url" content="https://{{ site_info.site_url }}">
+<meta property="og:site_name" content="{{ site_info.title }}">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="{{ page_info.title }}">
-<meta name="twitter:title" content="{{ page_info.title }}">
-<meta name="twitter:description" content="{{ page_info.description }}">
-<meta name="twitter:image" content="https://{{ site_url }}{% static 'img/bg-meta.png' %}">
+<meta name="twitter:site" content="{{ site_info.title }}">
+<meta name="twitter:title" content="{{ site_info.title }}">
+<meta name="twitter:description" content="{{ site_info.description }}">
+<meta name="twitter:image" content="https://{{ site_info.site_url }}{% static 'img/bg-meta.png' %}">

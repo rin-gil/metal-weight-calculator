@@ -10,25 +10,13 @@ from django.views.generic import TemplateView
 
 from app.settings import ALLOWED_HOSTS
 
-from metal_calc.services import (
-    get_context_data_for_calculator_fields,
-    METAL_ALLOYS,
-    METAL_SHAPES,
-    METAL_TYPES,
-    PAGE_INFO,
-    SITE_URL,
-)
+from metal_calc.services import get_context_data_for_calculator_fields
 
 
 class MetalCalcHomeView(TemplateView):
     """Displaying information on the pages of the site"""
     template_name: str = "metalCalc/index.html"
     context: dict = {
-        "page_info": PAGE_INFO,
-        "site_url": SITE_URL,
-        "shapes": METAL_SHAPES,
-        "metal_types": METAL_TYPES,
-        "metal_alloys": METAL_ALLOYS,
         "shape_selected": 1,
         "metal_type_selected": 1,
         "metal_alloy_selected": 0,

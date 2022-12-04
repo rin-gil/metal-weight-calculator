@@ -1,25 +1,16 @@
 """Provides a metal calculator"""
 
-from django.db.models import QuerySet
 from django.http import QueryDict
 
-from app.settings import ALLOWED_HOSTS
-
-from metal_calc.models import PageInfo, MetalShape, Metals, MetalGrade
-
-SITE_URL: str = ALLOWED_HOSTS[0]
-PAGE_INFO: QuerySet = PageInfo.objects.get(pk=1)
-METAL_SHAPES: QuerySet = MetalShape.objects.values("id", "shape_name")
-METAL_TYPES: QuerySet = Metals.objects.values("id", "metal_type", "density")
-METAL_ALLOYS: QuerySet = MetalGrade.objects.values("id", "metal_type_id", "metal_grade", "density")
+from metal_calc.models import Metals, MetalGrade
 
 
 def _calculate_weight_of_metal(volume: float, metal_type_selected: int, metal_alloy_selected: int) -> str:
     """Calculates the weight of the metal from the data entered by the user"""
     if metal_alloy_selected == 0:
-        density: int = METAL_TYPES.get(pk=metal_type_selected).get("density")
+        density: int = Metals.objects.get(pk=metal_type_selected).density
     else:
-        density = METAL_ALLOYS.get(pk=metal_alloy_selected).get("density")
+        density = MetalGrade.objects.get(pk=metal_alloy_selected).density
     return f"{round(volume * density, 2):.2f}"
 
 

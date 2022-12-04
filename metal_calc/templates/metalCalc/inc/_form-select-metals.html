@@ -1,11 +1,16 @@
+{% load metals %}
+{% get_metal_types as metal_types %}
+{% get_metal_alloys as metal_alloys %}
 <form id="metals" method="POST">
     {% csrf_token %}
     <div class="container">
         <div class="column_left">
             <label for="metal_type" class="form-label">Металл</label>
-            <select form="metals" class="form-select" id="metal_type" name="metal_type" onchange="selectMetalGrade(selectedMetal=this.value)">
+            <select form="metals" class="form-select" id="metal_type" name="metal_type"
+                    onchange="selectMetalGrade(selectedMetal=this.value)">
                 {% for metal in metal_types %}
-                <option value="{{ metal.id }}"{% if metal.id == metal_type_selected %} selected{% endif %}>{{ metal.metal_type }}</option>
+                    <option value="{{ metal.id }}"{% if metal.id == metal_type_selected %}
+                            selected{% endif %}>{{ metal.metal_type }}</option>
                 {% endfor %}
             </select>
         </div>

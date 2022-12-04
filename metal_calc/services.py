@@ -1,6 +1,7 @@
 """Provides a metal calculator"""
 
 from django.db.models import QuerySet
+from django.http import QueryDict
 
 from app.settings import ALLOWED_HOSTS
 
@@ -40,7 +41,7 @@ def _get_int_or_default_value(checked_variable: str, default_value: int) -> int:
         return result
 
 
-def get_context_data_for_calculator_fields(request: dict, context: dict) -> dict:
+def get_context_data_for_calculator_fields(request: QueryDict, context: dict) -> dict:
     """
     Sets the values of the calculator fields based on the data entered by the user.
 

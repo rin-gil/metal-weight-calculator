@@ -8,22 +8,17 @@ from django.shortcuts import render
 from django.urls import Resolver404
 from django.views.generic import TemplateView
 
-from metal_calc.services import get_context_data_for_calculator_fields
+from metal_calc.services import ContextData, default_context_data, get_context_data_for_calculator_fields
 
 
 class MetalCalcHomeView(TemplateView):
     """Displaying information on the pages of the site"""
     template_name: str = "metalCalc/index.html"
-    context: dict = {
-        "shape_selected": 1,
-        "metal_type_selected": 1,
-        "metal_alloy_selected": 0,
-        "error_message": False,
-    }
+    context: ContextData = default_context_data
 
     def get(self, request: WSGIRequest, **kwargs: Any) -> HttpResponse:
         """Displaying a page during a GET request"""
-        return render(request=request, template_name=self.template_name, context=self.context.copy())
+        return render(request=request, template_name=self.template_name, context=default_context_data)
 
     def post(self, request: WSGIRequest) -> HttpResponse:
         """Displaying a page during a POST request"""

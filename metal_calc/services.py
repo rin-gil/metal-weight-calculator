@@ -1,8 +1,42 @@
 """Provides a metal calculator"""
 
+from typing import TypedDict
+
 from django.http import QueryDict
 
 from metal_calc.models import Metals, MetalGrade
+
+
+class ContextData(TypedDict):
+    """Describes values for fields in the calculator"""
+    shape_selected: int
+    metal_type_selected: int
+    metal_alloy_selected: int
+    error_message: bool
+    width: int
+    height: int
+    s: int
+    s2: int
+    diameter: int
+    quantity: int
+    length: int
+    weight: str
+
+
+default_context_data: ContextData = {
+    "shape_selected": 1,
+    "metal_type_selected": 1,
+    "metal_alloy_selected": 0,
+    "error_message": False,
+    "width": 0,
+    "height": 0,
+    "s": 0,
+    "s2": 0,
+    "diameter": 0,
+    "quantity": 0,
+    "length": 0,
+    "weight": "0.00",
+}
 
 
 def _calculate_weight_of_metal(volume: float, metal_type_selected: int, metal_alloy_selected: int) -> str:
@@ -32,7 +66,7 @@ def _get_int_or_default_value(checked_variable: str, default_value: int) -> int:
         return result
 
 
-def get_context_data_for_calculator_fields(request: QueryDict, context: dict) -> dict:
+def get_context_data_for_calculator_fields(request: QueryDict, context: ContextData) -> ContextData:
     """
     Sets the values of the calculator fields based on the data entered by the user.
 

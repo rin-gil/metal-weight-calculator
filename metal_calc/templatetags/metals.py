@@ -5,6 +5,7 @@ from django.db.models import QuerySet
 
 from metal_calc.models import MetalGrade, Metals
 
+
 register: template.Library = template.Library()
 
 

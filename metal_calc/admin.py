@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from metalCalc.models import MetalGrade, Metals, MetalShape, PageInfo
+from metal_calc.models import MetalGrade, Metals, MetalShape, PageInfo
 
 
 class PageInfoAdmin(admin.ModelAdmin):

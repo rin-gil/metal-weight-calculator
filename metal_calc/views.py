@@ -1,4 +1,4 @@
-"""metalCalc views Configuration"""
+"""metal_calc views Configuration"""
 
 from typing import Any
 
@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 
 from app.settings import ALLOWED_HOSTS
 
-from metalCalc.services import (
+from metal_calc.services import (
     get_context_data_for_calculator_fields,
     METAL_ALLOYS,
     METAL_SHAPES,

@@ -5,11 +5,11 @@ from django.urls import path, include
 
 from app.settings import DEBUG
 
-from metalCalc.views import page_not_found
+from metal_calc.views import page_not_found
 
 
 urlpatterns: list = [
-    path("", include("metalCalc.urls")),
+    path("", include("metal_calc.urls")),
 ]
 
 if DEBUG:

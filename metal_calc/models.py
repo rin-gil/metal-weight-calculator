@@ -1,4 +1,4 @@
-"""The module describes the models used in the metalCalc application"""
+"""The module describes the models used in the metal_calc application"""
 
 from django.db import models
 

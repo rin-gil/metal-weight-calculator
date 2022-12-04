@@ -27,7 +27,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    "metalCalc.apps.MetalCalcConfig",
+    "metal_calc.apps.MetalCalcConfig",
 ]
 
 MIDDLEWARE: list[str] = [
@@ -64,7 +64,7 @@ WSGI_APPLICATION: str = "app.wsgi.application"
 DATABASES: dict = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "metalCalc/db.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -120,7 +120,7 @@ USE_TZ: bool = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL: str = "/static/"
-STATIC_ROOT: str = path.join(BASE_DIR, "metalCalc/static")
+STATIC_ROOT: str = path.join(BASE_DIR, "metal_calc/static")
 STATICFILES_DIRS: list = []
 
 # Default primary key field type

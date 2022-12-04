@@ -4,7 +4,7 @@ from django.db.models import QuerySet
 
 from app.settings import ALLOWED_HOSTS
 
-from metalCalc.models import PageInfo, MetalShape, Metals, MetalGrade
+from metal_calc.models import PageInfo, MetalShape, Metals, MetalGrade
 
 SITE_URL: str = ALLOWED_HOSTS[0]
 PAGE_INFO: QuerySet = PageInfo.objects.get(pk=1)

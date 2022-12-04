@@ -8,8 +8,6 @@ from django.shortcuts import render
 from django.urls import Resolver404
 from django.views.generic import TemplateView
 
-from app.settings import ALLOWED_HOSTS
-
 from metal_calc.services import get_context_data_for_calculator_fields
 
 
@@ -35,5 +33,5 @@ class MetalCalcHomeView(TemplateView):
 
 def page_not_found(request: WSGIRequest, exception: Resolver404) -> HttpResponse:
     """Displays a 404 application error page"""
-    context: dict = {"wrong_url": f"https://{ALLOWED_HOSTS[0]}/{exception.args[0]['path']}"}
+    context: dict = {"wrong_url": f"{exception.args[0]['path']}"}
     return render(request=request, template_name="metalCalc/404.html", context=context, status=404)

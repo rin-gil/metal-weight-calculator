@@ -26,7 +26,6 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "metal_calc.apps.MetalCalcConfig",
 ]
 
@@ -120,8 +119,7 @@ USE_TZ: bool = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL: str = "/static/"
-STATIC_ROOT: str = path.join(BASE_DIR, "metal_calc/static")
-STATICFILES_DIRS: list = []
+STATICFILES_DIRS: list[str] = [path.join(BASE_DIR, "static")]
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"

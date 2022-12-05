@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from metal_calc.models import MetalGrade, Metals, MetalShape, PageInfo
+from metal_calc.models import MetalAlloy, Metal, MetalShape, PageInfo
 
 
 class PageInfoAdmin(admin.ModelAdmin):
@@ -21,23 +21,23 @@ class MetalShapeAdmin(admin.ModelAdmin):
 
 class MetalsAdmin(admin.ModelAdmin):
     """Displaying the MetalsAdmin model in the admin panel"""
-    list_display: tuple = ("id", "metal_type", "density")
-    list_display_links: tuple = ("metal_type",)
-    search_fields: tuple = ("metal_type",)
+    list_display: tuple = ("id", "metal_name", "density")
+    list_display_links: tuple = ("metal_name",)
+    search_fields: tuple = ("metal_name",)
 
 
 class MetalGradeAdmin(admin.ModelAdmin):
     """Displaying the MetalGradeAdmin model in the admin panel"""
-    list_display: tuple = ("id", "metal_type_id", "metal_grade", "density")
-    list_display_links: tuple = ("metal_grade",)
-    list_filter: tuple = ("metal_type_id",)
-    search_fields: tuple = ("metal_grade",)
+    list_display: tuple = ("id", "metal", "metal_alloy", "density")
+    list_display_links: tuple = ("metal_alloy",)
+    list_filter: tuple = ("metal",)
+    search_fields: tuple = ("metal_alloy",)
 
 
 admin.site.register(PageInfo, PageInfoAdmin)
 admin.site.register(MetalShape, MetalShapeAdmin)
-admin.site.register(Metals, MetalsAdmin)
-admin.site.register(MetalGrade, MetalGradeAdmin)
+admin.site.register(Metal, MetalsAdmin)
+admin.site.register(MetalAlloy, MetalGradeAdmin)
 
 admin.site.site_title = "Калькулятор веса металла"
 admin.site.site_header = "Панель администратора :: Калькулятор веса металла"

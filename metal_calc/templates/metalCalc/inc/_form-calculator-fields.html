@@ -1,52 +1,52 @@
 <form id="calculator" method="POST">
     {% csrf_token %}
-    <input form="calculator" type="hidden" name="metal_shape" value="{{ shape_selected }}">
-    <input form="calculator" type="hidden" name="metal_type" id="metal_type_selected" value="{{ metal_type_selected }}">
+    <input form="calculator" type="hidden" name="metal_shape" value="{{ metal_shape_selected }}">
+    <input form="calculator" type="hidden" name="metal" id="metal_selected" value="{{ metal_selected }}">
     <input form="calculator" type="hidden" name="metal_alloy" id="metal_alloy_selected" value="{{ metal_alloy_selected }}">
 
-    {% if shape_selected == 1 or shape_selected == 2 or shape_selected == 4 or shape_selected == 5 or shape_selected == 7 or shape_selected == 8 or shape_selected == 9 %}
+    {% if metal_shape_selected == 1 or metal_shape_selected == 2 or metal_shape_selected == 4 or metal_shape_selected == 5 or metal_shape_selected == 7 or metal_shape_selected == 8 or metal_shape_selected == 9 %}
     <div class="form-floating">
         <input id="width" type="number" class="form-control" required placeholder="Ширина a, мм" name="width" min="0" max="100000" value="{% if width %}{{ width }}{% else %}0{% endif %}" onkeypress="enterNumbersOnly()" onFocus="this.select()">
         <label for="width">Ширина a, мм</label>
     </div>
     {% endif %}
 
-    {% if shape_selected == 1 or shape_selected == 4 or shape_selected == 7 or shape_selected == 8 or shape_selected == 9 %}
+    {% if metal_shape_selected == 1 or metal_shape_selected == 4 or metal_shape_selected == 7 or metal_shape_selected == 8 or metal_shape_selected == 9 %}
     <div class="form-floating">
         <input id="height" type="number" class="form-control" required placeholder="Высота b, мм" name="height" min="0" max="100000" value="{% if height %}{{ height }}{% else %}0{% endif %}" onkeypress="enterNumbersOnly()" onFocus="this.select()">
         <label for="height">Высота b, мм</label>
     </div>
     {% endif %}
 
-    {% if shape_selected == 3 or shape_selected == 6 or shape_selected == 10 %}
+    {% if metal_shape_selected == 3 or metal_shape_selected == 6 or metal_shape_selected == 10 %}
     <div class="form-floating">
         <input id="diameter" type="number" class="form-control" required placeholder="Диаметр d, мм" name="diameter" min="0" max="100000" value="{% if diameter %}{{ diameter }}{% else %}0{% endif %}" onkeypress="enterNumbersOnly()" onFocus="this.select()">
         <label for="diameter">Диаметр d, мм</label>
     </div>
     {% endif %}
 
-    {% if shape_selected == 1 or shape_selected == 4 or shape_selected == 5 or shape_selected == 6 or shape_selected == 7 or shape_selected == 8 or shape_selected == 9 %}
+    {% if metal_shape_selected == 1 or metal_shape_selected == 4 or metal_shape_selected == 5 or metal_shape_selected == 6 or metal_shape_selected == 7 or metal_shape_selected == 8 or metal_shape_selected == 9 %}
     <div class="form-floating">
         <input id="s" type="number" class="form-control" required placeholder="Толщина s, мм" name="s" min="0" max="100000" value="{% if s %}{{ s }}{% else %}0{% endif %}" onkeypress="enterNumbersOnly()" onFocus="this.select()">
         <label for="s">Толщина s, мм</label>
     </div>
     {% endif %}
 
-    {% if shape_selected == 1 %}
+    {% if metal_shape_selected == 1 %}
     <div class="form-floating">
         <input id="s2" type="number" class="form-control" required placeholder="Толщина s2, мм" name="s2" min="0" max="100000" value="{% if s2 %}{{ s2 }}{% else %}0{% endif %}" onkeypress="enterNumbersOnly()" onFocus="this.select()">
         <label for="s2">Толщина s2, мм</label>
     </div>
     {% endif %}
 
-    {% if shape_selected == 4 %}
+    {% if metal_shape_selected == 4 %}
     <div class="form-floating">
         <input id="quantity" type="number" class="form-control" required placeholder="Количество листов, шт" name="quantity" min="0" max="100000" value="{% if quantity %}{{ quantity }}{% else %}0{% endif %}" onkeypress="enterNumbersOnly()" onFocus="this.select()">
         <label for="quantity">Количество листов, шт</label>
     </div>
     {% endif %}
 
-    {% if not shape_selected == 4 %}
+    {% if not metal_shape_selected == 4 %}
     <div class="form-floating">
         <input id="length" type="number" class="form-control" required placeholder="Длина, м" name="length" min="0" max="100000" value="{% if length %}{{ length }}{% else %}0{% endif %}" onkeypress="enterNumbersOnly()" onFocus="this.select()">
         <label for="length">Длина, м</label>

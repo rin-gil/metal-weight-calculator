@@ -1,16 +1,14 @@
 {% load metals %}
-{% get_metal_types as metal_types %}
-{% get_metal_alloys as metal_alloys %}
+{% get_metals as metals %}
+{% get_alloys as alloys %}
 <form id="metals" method="POST">
     {% csrf_token %}
     <div class="container">
         <div class="column_left">
-            <label for="metal_type" class="form-label">Металл</label>
-            <select form="metals" class="form-select" id="metal_type" name="metal_type"
-                    onchange="selectMetalGrade(selectedMetal=this.value)">
-                {% for metal in metal_types %}
-                    <option value="{{ metal.id }}"{% if metal.id == metal_type_selected %}
-                            selected{% endif %}>{{ metal.metal_type }}</option>
+            <label for="metal" class="form-label">Металл</label>
+            <select form="metals" class="form-select" id="metal" name="metal" onchange="selectMetal(selectedMetal=this.value)">
+                {% for metal in metals %}
+                    <option value="{{ metal.id }}"{% if metal.id == metal_selected %} selected{% endif %}>{{ metal.metal_name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -18,8 +16,8 @@
             <label for="metal_alloy" class="form-label">Марка сплава</label>
             <select form="metals" class="form-select" id="metal_alloy" name="metal_alloy" onchange="selectMetalAlloy(selectedAlloy=this.value)">
                 <option value="0">Прочие</option>
-                {% for metal_alloy in metal_alloys %}
-                <option value="{{ metal_alloy.id }}"{% if metal_alloy.id == metal_alloy_selected %} selected{% endif %} class="grade {{ metal_alloy.metal_type_id }} {% if metal_alloy.metal_type_id == metal_type_selected %}visible{% else %}hidden{% endif %}">{{ metal_alloy.metal_grade }}</option>
+                {% for alloy in alloys %}
+                <option value="{{ alloy.id }}"{% if alloy.id == metal_alloy_selected %} selected{% endif %} class="grade {{ alloy.metal_id }} {% if alloy.metal_id == metal_selected %}visible{% else %}hidden{% endif %}">{{ alloy.metal_alloy }}</option>
                 {% endfor %}
             </select>
         </div>

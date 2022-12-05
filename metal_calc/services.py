@@ -5,14 +5,14 @@ from typing import TypedDict
 
 from django.http import QueryDict
 
-from metal_calc.models import MetalGrade, Metals, MetalShape
+from metal_calc.models import MetalAlloy, Metal, MetalShape
 
 
 class ContextData(TypedDict):
     """Describes values for fields in the calculator"""
 
-    shape_selected: int
-    metal_type_selected: int
+    metal_shape_selected: int
+    metal_selected: int
     metal_alloy_selected: int
     error_message: bool
     width: int
@@ -34,8 +34,8 @@ class MetalCalculator:
 
     def __init__(self) -> None:
         self.default_context_data: ContextData = {
-            "shape_selected": 1,
-            "metal_type_selected": 1,
+            "metal_shape_selected": 1,
+            "metal_selected": 1,
             "metal_alloy_selected": 0,
             "error_message": False,
             "width": 0,
@@ -48,21 +48,21 @@ class MetalCalculator:
             "weight": "0.00",
         }
 
-    def _parse_shape(self, shape: str | None) -> int:
+    def _parse_shape(self, metal_shape: str | None) -> int:
         """Checks the correctness of the selected metal shape"""
-        if shape in tuple(map(str, MetalShape.objects.values_list("id", flat=True))):
-            return int(shape)
-        return self.default_context_data["shape_selected"]
+        if metal_shape in tuple(map(str, MetalShape.objects.values_list("id", flat=True))):
+            return int(metal_shape)
+        return self.default_context_data["metal_shape_selected"]
 
-    def _parse_metal_type(self, metal_type: str | None) -> int:
+    def _parse_metal_type(self, metal: str | None) -> int:
         """Checks the correctness of the selected metal type"""
-        if metal_type in tuple(map(str, Metals.objects.values_list("id", flat=True))):
-            return int(metal_type)
-        return self.default_context_data["metal_type_selected"]
+        if metal in tuple(map(str, Metal.objects.values_list("id", flat=True))):
+            return int(metal)
+        return self.default_context_data["metal_selected"]
 
     def _parse_metal_alloy(self, metal_alloy: str | None) -> int:
         """Checks the correctness of the selected metal alloy"""
-        if metal_alloy in tuple(map(str, MetalGrade.objects.values_list("id", flat=True))):
+        if metal_alloy in tuple(map(str, MetalAlloy.objects.values_list("id", flat=True))):
             return int(metal_alloy)
         return self.default_context_data["metal_alloy_selected"]
 
@@ -136,7 +136,7 @@ class MetalCalculator:
         """Calculates hex bar volume"""
         return 2 * (3**0.5) * (diameter / 2000) ** 2 * length
 
-    def _calculate_volume_of_shape(self, shape_selected: int, context: ContextData) -> float:
+    def _calculate_volume_of_shape(self, metal_shape_selected: int, context: ContextData) -> float:
         """Calculates the volume of metal shapes according to the data entered by user"""
         width: int = context["width"]
         height: int = context["height"]
@@ -146,25 +146,25 @@ class MetalCalculator:
         quantity: int = context["quantity"]
         length: int = context["length"]
 
-        if shape_selected == 1:  # Beam
+        if metal_shape_selected == 1:  # Beam
             volume: float = self._calculate_volume_of_beam(width=width, height=height, s=s, s2=s2, length=length)
-        elif shape_selected == 2:  # Square bar
+        elif metal_shape_selected == 2:  # Square bar
             volume = self._calculate_volume_of_square_bar(width=width, length=length)
-        elif shape_selected == 3:  # Round bar
+        elif metal_shape_selected == 3:  # Round bar
             volume = self._calculate_volume_of_round_bar(diameter=diameter, length=length)
-        elif shape_selected == 4:  # Sheet
+        elif metal_shape_selected == 4:  # Sheet
             volume = self._calculate_volume_of_sheet(width=width, height=height, s=s, quantity=quantity)
-        elif shape_selected == 5:  # Flat bar
+        elif metal_shape_selected == 5:  # Flat bar
             volume = self._calculate_volume_of_flat_bar(width=width, s=s, length=length)
-        elif shape_selected == 6:  # Round tube
+        elif metal_shape_selected == 6:  # Round tube
             volume = self._calculate_volume_of_round_tube(diameter=diameter, s=s, length=length)
-        elif shape_selected == 7:  # Tubing
+        elif metal_shape_selected == 7:  # Tubing
             volume = self._calculate_volume_of_tubing(width=width, height=height, s=s, length=length)
-        elif shape_selected == 8:  # Angle
+        elif metal_shape_selected == 8:  # Angle
             volume = self._calculate_volume_of_angle(width=width, height=height, s=s, length=length)
-        elif shape_selected == 9:  # Channel
+        elif metal_shape_selected == 9:  # Channel
             volume = self._calculate_volume_of_channel(width=width, height=height, s=s, length=length)
-        elif shape_selected == 10:  # Hex bar
+        elif metal_shape_selected == 10:  # Hex bar
             volume = self._calculate_volume_of_hex_bar(diameter=diameter, length=length)
         else:
             volume = 0.0
@@ -172,21 +172,21 @@ class MetalCalculator:
         return volume
 
     @staticmethod
-    def _calculate_weight_of_metal(volume: float, metal_type_selected: int, metal_alloy_selected: int) -> str:
+    def _calculate_weight_of_metal(volume: float, metal_selected: int, metal_alloy_selected: int) -> str:
         """Calculates the weight of the metal from the data entered by the user"""
         if metal_alloy_selected == 0:
-            density: int = Metals.objects.get(pk=metal_type_selected).density
+            density: int = Metal.objects.get(pk=metal_selected).density
         else:
-            density = MetalGrade.objects.get(pk=metal_alloy_selected).density
+            density = MetalAlloy.objects.get(pk=metal_alloy_selected).density
         return f"{round(volume * density, 2):.2f}"
 
     def get_context_data_for_calculator_fields(self, request: QueryDict, context: ContextData) -> ContextData:
         """Sets the values of the calculator fields based on the data entered by the user"""
-        shape_selected: int = self._parse_shape(shape=request.get("metal_shape"))
-        metal_type_selected: int = self._parse_metal_type(metal_type=request.get("metal_type"))
+        metal_shape_selected: int = self._parse_shape(metal_shape=request.get("metal_shape"))
+        metal_selected: int = self._parse_metal_type(metal=request.get("metal"))
         metal_alloy_selected: int = self._parse_metal_alloy(metal_alloy=request.get("metal_alloy"))
-        context["shape_selected"] = shape_selected
-        context["metal_type_selected"] = metal_type_selected
+        context["metal_shape_selected"] = metal_shape_selected
+        context["metal_selected"] = metal_selected
         context["metal_alloy_selected"] = metal_alloy_selected
 
         width: int = self._parse_value(checked_value=request.get("width"))
@@ -205,12 +205,12 @@ class MetalCalculator:
         context["length"] = length
 
         try:  # Check the correctness of the shape dimensions
-            volume: float = self._calculate_volume_of_shape(shape_selected=shape_selected, context=context)
+            volume: float = self._calculate_volume_of_shape(metal_shape_selected=metal_shape_selected, context=context)
         except ShapeDimensionsError:
             context["error_message"] = True
         else:
             context["weight"] = self._calculate_weight_of_metal(
-                volume=volume, metal_type_selected=metal_type_selected, metal_alloy_selected=metal_alloy_selected
+                volume=volume, metal_selected=metal_selected, metal_alloy_selected=metal_alloy_selected
             )
 
         return context

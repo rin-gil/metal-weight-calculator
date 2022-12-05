@@ -52,9 +52,9 @@ TEMPLATES: list = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-            ],
+            ]
         },
-    },
+    }
 ]
 
 WSGI_APPLICATION: str = "app.wsgi.application"
@@ -69,18 +69,10 @@ DATABASES: dict = {
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS: list = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 # Logging
@@ -101,13 +93,7 @@ AUTH_PASSWORD_VALIDATORS: list = [
 #             "filename": BASE_DIR / "metalCalculator.log",
 #         },
 #     },
-#     "loggers": {
-#         "django": {
-#             "handlers": ["file"],
-#             "level": "INFO",
-#             "propagate": True,
-#         },
-#     },
+#     "loggers": {"django": {"handlers": ["file"], "level": "INFO", "propagate": True}},
 # }
 
 # Internationalization

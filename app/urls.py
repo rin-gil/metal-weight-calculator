@@ -8,9 +8,7 @@ from app.settings import DEBUG
 from metal_calc.views import page_not_found
 
 
-urlpatterns: list = [
-    path("", include("metal_calc.urls")),
-]
+urlpatterns: list = [path("", include("metal_calc.urls"))]
 
 if DEBUG:
     urlpatterns += [path("admin/", admin.site.urls)]

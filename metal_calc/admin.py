@@ -7,6 +7,7 @@ from metal_calc.models import MetalAlloy, Metal, MetalShape, PageInfo
 
 class PageInfoAdmin(admin.ModelAdmin):
     """Displaying the PageInfoAdmin model in the admin panel"""
+
     list_display: tuple = ("title", "description", "keywords")
     list_display_links: tuple = ("title",)
     search_fields: tuple = ("title", "description", "keywords")
@@ -14,6 +15,7 @@ class PageInfoAdmin(admin.ModelAdmin):
 
 class MetalShapeAdmin(admin.ModelAdmin):
     """Displaying MetalShapeAdmin XXX model in the admin panel"""
+
     list_display: tuple = ("id", "shape_name")
     list_display_links: tuple = ("shape_name",)
     search_fields: tuple = ("shape_name",)
@@ -21,6 +23,7 @@ class MetalShapeAdmin(admin.ModelAdmin):
 
 class MetalsAdmin(admin.ModelAdmin):
     """Displaying the MetalsAdmin model in the admin panel"""
+
     list_display: tuple = ("id", "metal_name", "density")
     list_display_links: tuple = ("metal_name",)
     search_fields: tuple = ("metal_name",)
@@ -28,6 +31,7 @@ class MetalsAdmin(admin.ModelAdmin):
 
 class MetalGradeAdmin(admin.ModelAdmin):
     """Displaying the MetalGradeAdmin model in the admin panel"""
+
     list_display: tuple = ("id", "metal", "metal_alloy", "density")
     list_display_links: tuple = ("metal_alloy",)
     list_filter: tuple = ("metal",)

@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    {% include 'metalCalc/inc/_favicons.html' %}
+    {% include 'metal_calc/inc/_favicons.html' %}
     <link rel="preload" href="{% static 'js/script.min.js' %}" as="script">
     <link rel="preload" href="{% static 'css/reset.min.css' %}" as="style">
     <link rel="preload" href="{% static 'css/style.min.css' %}" as="style">
     <link rel="stylesheet"  href="{% static 'css/reset.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
-    {% include 'metalCalc/inc/_meta-tags.html' %}
+    {% include 'metal_calc/inc/_meta-tags.html' %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 <div class="wrapper">
-    {% include 'metalCalc/inc/_header.html' %}
+    {% include 'metal_calc/inc/_header.html' %}
     {% block main %}{% endblock %}
-    {% include 'metalCalc/inc/_footer.html' %}
+    {% include 'metal_calc/inc/_footer.html' %}
 </div>
     <script src="{% static 'js/script.min.js' %}" defer></script>
 </body>

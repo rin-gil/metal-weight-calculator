@@ -14,7 +14,7 @@ from metal_calc.services import ContextData, MetalCalculator
 class MetalCalcHomeView(TemplateView):
     """Displaying information on the pages of the site"""
 
-    template_name: str = "metalCalc/index.html"
+    template_name: str = "metal_calc/index.html"
     calculator: MetalCalculator = MetalCalculator()
     context: ContextData = calculator.default_context_data
 
@@ -33,4 +33,4 @@ class MetalCalcHomeView(TemplateView):
 def page_not_found(request: WSGIRequest, exception: Resolver404) -> HttpResponse:
     """Displays a 404 application error page"""
     context: dict = {"wrong_url": f"{exception.args[0]['path']}"}
-    return render(request=request, template_name="metalCalc/404.html", context=context, status=404)
+    return render(request=request, template_name="metal_calc/404.html", context=context, status=404)

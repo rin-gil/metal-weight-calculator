@@ -1,4 +1,4 @@
-{% extends 'metalCalc/base.html' %}
+{% extends 'metal_calc/base.html' %}
 {% load site_info %}
 
 
@@ -11,12 +11,12 @@
         <h1>{{ site_info.title }}</h1>
         <div class="container fade">
             <div class="column_left">
-                {% include 'metalCalc/inc/_drawings.html' %}
+                {% include 'metal_calc/inc/_drawings.html' %}
             </div>
             <div class="column_right">
-                {% include 'metalCalc/inc/_form-select-metals.html' %}
+                {% include 'metal_calc/inc/_form-select-metals.html' %}
                 <br>
-                {% include 'metalCalc/inc/_form-calculator-fields.html' %}
+                {% include 'metal_calc/inc/_form-calculator-fields.html' %}
                 <br>
                 {% if error_message %}<p class="text-danger">Проверьте правильность введенных данных!</p><br>{% endif %}
             <div class="container">

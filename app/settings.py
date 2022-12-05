@@ -63,7 +63,7 @@ WSGI_APPLICATION: str = "app.wsgi.application"
 DATABASES: dict = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 

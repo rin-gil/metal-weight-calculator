@@ -1,11 +1,11 @@
-{% load shapes %}
-{% get_shapes as shapes %}
+{% load metal_shapes %}
+{% get_metal_shapes as metal_shapes %}
 <header class="header">
     <nav>
         <ul class="nav-tabs">
-            {% for shape in shapes %}
+            {% for metal_shape in metal_shapes %}
                 <li class="nav-item">
-                    <button class="nav-link" form="metals" type="submit" name="metal_shape" value="{{ shape.id }}"{% if shape.id == metal_shape_selected %} disabled{% endif %}>{{ shape.shape_name }}</button>
+                    <button class="nav-link" form="metals" type="submit" name="metal_shape" value="{{ metal_shape.id }}"{% if metal_shape.id == metal_shape_selected %} disabled{% endif %}>{{ metal_shape.shape_name }}</button>
                 </li>
             {% endfor %}
         </ul>

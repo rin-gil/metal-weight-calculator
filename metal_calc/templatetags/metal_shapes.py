@@ -10,6 +10,6 @@ register: template.Library = template.Library()
 
 
 @register.simple_tag()
-def get_shapes() -> QuerySet:
+def get_metal_shapes() -> QuerySet:
     """Returns information about rolled steel shapes"""
     return MetalShape.objects.values("id", "shape_name")

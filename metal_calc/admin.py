@@ -21,7 +21,7 @@ class MetalShapeAdmin(admin.ModelAdmin):
     search_fields: tuple = ("shape_name",)
 
 
-class MetalsAdmin(admin.ModelAdmin):
+class MetalAdmin(admin.ModelAdmin):
     """Displaying the MetalsAdmin model in the admin panel"""
 
     list_display: tuple = ("id", "metal_name", "density")
@@ -40,7 +40,7 @@ class MetalGradeAdmin(admin.ModelAdmin):
 
 admin.site.register(PageInfo, PageInfoAdmin)
 admin.site.register(MetalShape, MetalShapeAdmin)
-admin.site.register(Metal, MetalsAdmin)
+admin.site.register(Metal, MetalAdmin)
 admin.site.register(MetalAlloy, MetalGradeAdmin)
 
 admin.site.site_title = "Калькулятор веса металла"

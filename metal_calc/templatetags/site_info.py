@@ -3,7 +3,6 @@
 from django import template
 
 from app.settings import ALLOWED_HOSTS
-
 from metal_calc.models import PageInfo
 
 

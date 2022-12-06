@@ -16,6 +16,6 @@ def get_metals() -> QuerySet:
 
 
 @register.simple_tag()
-def get_alloys() -> QuerySet:
+def get_metal_alloys() -> QuerySet:
     """Returns information about metal alloys"""
     return MetalAlloy.objects.values("id", "metal_alloy", "density", "metal_id")

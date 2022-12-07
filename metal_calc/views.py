@@ -24,7 +24,7 @@ class MetalCalcHomeView(TemplateView):
 
     def post(self, request: WSGIRequest) -> HttpResponse:
         """Displaying a page during a POST request"""
-        context = self.calculator.get_context_data_for_calculator_fields(
+        context: ContextData = self.calculator.get_context_data_for_calculator_fields(
             request=request.POST, context=self.context.copy()
         )
         return render(request=request, template_name=self.template_name, context=context)

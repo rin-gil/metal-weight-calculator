@@ -111,22 +111,22 @@ class MetalCalculator:
         return pi * (diameter**2 - (diameter - s * 2) ** 2) / 4 / 1000000 * length
 
     @staticmethod
-    def _calculate_volume_of_tubing(width: int, height: int, s: int, length: int) -> float:
-        """Calculates tubing volume"""
+    def _calculate_volume_of_profile_tube(width: int, height: int, s: int, length: int) -> float:
+        """Calculates profile tube volume"""
         if min(width, height) < s * 2:  # Check that the dimensions are correct
             raise ShapeDimensionsError
         return (width * height - (width - s * 2) * (height - s * 2)) / 1000000 * length
 
     @staticmethod
-    def _calculate_volume_of_angle(width: int, height: int, s: int, length: int) -> float:
-        """Calculates angle volume"""
+    def _calculate_volume_of_metal_angle(width: int, height: int, s: int, length: int) -> float:
+        """Calculates metal angle volume"""
         if min(width, height) < s:  # Check that the dimensions are correct
             raise ShapeDimensionsError
         return (width * s + (height - s) * s) / 1000000 * length
 
     @staticmethod
-    def _calculate_volume_of_channel(width: int, height: int, s: int, length: int) -> float:
-        """Calculates channel volume"""
+    def _calculate_volume_of_metal_channel(width: int, height: int, s: int, length: int) -> float:
+        """Calculates metal channel volume"""
         if width < s * 2 or height < s:  # Check that the dimensions are correct
             raise ShapeDimensionsError
         return (width * s + (height - s) * s * 2) / 1000000 * length
@@ -158,12 +158,12 @@ class MetalCalculator:
             volume = self._calculate_volume_of_flat_bar(width=width, s=s, length=length)
         elif metal_shape_selected == 6:  # Round tube
             volume = self._calculate_volume_of_round_tube(diameter=diameter, s=s, length=length)
-        elif metal_shape_selected == 7:  # Tubing
-            volume = self._calculate_volume_of_tubing(width=width, height=height, s=s, length=length)
-        elif metal_shape_selected == 8:  # Angle
-            volume = self._calculate_volume_of_angle(width=width, height=height, s=s, length=length)
-        elif metal_shape_selected == 9:  # Channel
-            volume = self._calculate_volume_of_channel(width=width, height=height, s=s, length=length)
+        elif metal_shape_selected == 7:  # Profile tube
+            volume = self._calculate_volume_of_profile_tube(width=width, height=height, s=s, length=length)
+        elif metal_shape_selected == 8:  # Metal angle
+            volume = self._calculate_volume_of_metal_angle(width=width, height=height, s=s, length=length)
+        elif metal_shape_selected == 9:  # Metal channel
+            volume = self._calculate_volume_of_metal_channel(width=width, height=height, s=s, length=length)
         elif metal_shape_selected == 10:  # Hex bar
             volume = self._calculate_volume_of_hex_bar(diameter=diameter, length=length)
         else:

@@ -1,8 +1,10 @@
-"""ASGI config for metalCalculator project"""
+"""Django settings for metalCalculator project"""
 
 from os import path
 from pathlib import Path
 from environs import Env
+
+from django.utils.translation import gettext_lazy as _
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,6 +22,7 @@ ALLOWED_HOSTS: list[str] = ["127.0.0.1"]
 
 # Application definition
 INSTALLED_APPS: list[str] = [
+    "modeltranslation",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -32,6 +35,7 @@ INSTALLED_APPS: list[str] = [
 MIDDLEWARE: list[str] = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -97,7 +101,14 @@ AUTH_PASSWORD_VALIDATORS: list = [
 # }
 
 # Internationalization
-LANGUAGE_CODE: str = "ru"
+LANGUAGE_CODE: str = "en"
+LANGUAGES: list[tuple] = [
+    ("en", _("English")),
+    ("ru", _("Russian")),
+    ("uk", _("Ukrainian")),
+]
+LOCALE_PATHS: list[str] = [path.join(BASE_DIR, "locales")]
+MODELTRANSLATION_DEFAULT_LANGUAGE: str = LANGUAGE_CODE
 TIME_ZONE: str = "UTC"
 USE_I18N: bool = True
 USE_L10N: bool = True

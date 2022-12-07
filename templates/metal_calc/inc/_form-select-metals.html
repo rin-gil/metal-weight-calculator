@@ -1,11 +1,12 @@
 {% load metals %}
+{% load static i18n %}
 {% get_metals as metals %}
 {% get_metal_alloys as metal_alloys %}
 <form id="metals" method="POST">
     {% csrf_token %}
     <div class="container">
         <div class="column_left">
-            <label for="metal" class="form-label">Металл</label>
+            <label for="metal" class="form-label">{% trans "Metal" %}</label>
             <select form="metals" class="form-select" id="metal" name="metal" onchange="selectMetal(selectedMetal=this.value)">
                 {% for metal in metals %}
                     <option value="{{ metal.id }}"{% if metal.id == metal_selected %} selected{% endif %}>{{ metal.metal_name }}</option>
@@ -13,9 +14,9 @@
             </select>
         </div>
         <div class="column_right">
-            <label for="metal_alloy" class="form-label">Марка сплава</label>
+            <label for="metal_alloy" class="form-label">{% trans "Metal alloy" %}</label>
             <select form="metals" class="form-select" id="metal_alloy" name="metal_alloy" onchange="selectMetalAlloy(selectedAlloy=this.value)">
-                <option value="0">Прочие</option>
+                <option value="0">{% trans "Other" %}</option>
                 {% for metal_alloy in metal_alloys %}
                 <option value="{{ metal_alloy.id }}"{% if metal_alloy.id == metal_alloy_selected %} selected{% endif %} class="grade {{ metal_alloy.metal_id }} {% if metal_alloy.metal_id == metal_selected %}visible{% else %}hidden{% endif %}">{{ metal_alloy.metal_alloy }}</option>
                 {% endfor %}

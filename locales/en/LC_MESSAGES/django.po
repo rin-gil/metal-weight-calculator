@@ -1,0 +1,226 @@
+# English translations for MetalWeightCalculator.
+# Copyright (C) 2022 Ringil
+# This file is distributed under the same license as the MetalWeightCalculator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: MetalWeightCalculator v1.5.0\n"
+"Report-Msgid-Bugs-To: noreply@domain.com\n"
+"POT-Creation-Date: 2022-12-07 21:48+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\app\settings.py:106
+msgid "English"
+msgstr "English"
+
+#: .\app\settings.py:107
+msgid "Russian"
+msgstr "Russian"
+
+#: .\app\settings.py:108
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+#: .\metal_calc\admin.py:49 .\metal_calc\apps.py:12
+msgid "Metal weight calculator"
+msgstr "Metal weight calculator"
+
+#: .\metal_calc\admin.py:50
+msgid "Admin Panel :: Metal weight calculator"
+msgstr "Admin Panel :: Metal weight calculator"
+
+#: .\metal_calc\models.py:10
+msgid "Page title"
+msgstr "Page title"
+
+#: .\metal_calc\models.py:11
+msgid "Page description"
+msgstr "Page description"
+
+#: .\metal_calc\models.py:12
+msgid "Keywords"
+msgstr "Keywords"
+
+#: .\metal_calc\models.py:20
+msgid "Site page"
+msgstr "Site page"
+
+#: .\metal_calc\models.py:21
+msgid "Site pages"
+msgstr "Site pages"
+
+#: .\metal_calc\models.py:28
+msgid "Profile name"
+msgstr "Profile name"
+
+#: .\metal_calc\models.py:36
+msgid "Rolled metal profile"
+msgstr "Rolled metal profile"
+
+#: .\metal_calc\models.py:37
+msgid "Rolled metal profiles"
+msgstr "Rolled metal profiles"
+
+#: .\metal_calc\models.py:44
+msgid "Metal name"
+msgstr "Metal name"
+
+#: .\metal_calc\models.py:45
+msgid "Metal density, kg/m³"
+msgstr "Metal density, kg/m³"
+
+#: .\metal_calc\models.py:53 .\metal_calc\models.py:61
+#: .\templates\metal_calc\inc\_form-select-metals.html:9
+msgid "Metal"
+msgstr "Metal"
+
+#: .\metal_calc\models.py:54
+msgid "Metals"
+msgstr "Metals"
+
+#: .\metal_calc\models.py:62
+msgid "Name of alloy"
+msgstr "Name of alloy"
+
+#: .\metal_calc\models.py:63
+msgid "Alloy density, kg/m³"
+msgstr "Alloy density, kg/m³"
+
+#: .\metal_calc\models.py:71
+msgid "Alloy"
+msgstr "Alloy"
+
+#: .\metal_calc\models.py:72
+msgid "Alloys"
+msgstr "Alloys"
+
+#: .\templates\metal_calc\404.html:17 .\templates\metal_calc\404.html:22
+msgid "Page not found"
+msgstr "Page not found"
+
+#: .\templates\metal_calc\404.html:23
+msgid "Page"
+msgstr "Page"
+
+#: .\templates\metal_calc\404.html:23
+msgid "not found on this site"
+msgstr "not found on this site"
+
+#: .\templates\metal_calc\404.html:24
+msgid "You will be redirected to the home page in 5 seconds"
+msgstr "You will be redirected to the home page in 5 seconds"
+
+#: .\templates\metal_calc\inc\_drawings.html:3
+msgid "Beam"
+msgstr "Beam"
+
+#: .\templates\metal_calc\inc\_drawings.html:4
+msgid "Square bar"
+msgstr "Square bar"
+
+#: .\templates\metal_calc\inc\_drawings.html:5
+msgid "Round bar"
+msgstr "Round bar"
+
+#: .\templates\metal_calc\inc\_drawings.html:6
+msgid "Sheet"
+msgstr "Sheet"
+
+#: .\templates\metal_calc\inc\_drawings.html:7
+msgid "Flat bar"
+msgstr "Flat bar"
+
+#: .\templates\metal_calc\inc\_drawings.html:8
+msgid "Round tube"
+msgstr "Round tube"
+
+#: .\templates\metal_calc\inc\_drawings.html:9
+msgid "Profile tube"
+msgstr "Profile tube"
+
+#: .\templates\metal_calc\inc\_drawings.html:10
+msgid "Metal angle"
+msgstr "Metal angle"
+
+#: .\templates\metal_calc\inc\_drawings.html:11
+msgid "Metal channel"
+msgstr "Metal channel"
+
+#: .\templates\metal_calc\inc\_drawings.html:12
+msgid "Hex bar"
+msgstr "Hex bar"
+
+#: .\templates\metal_calc\inc\_footer.html:3
+msgid "Made by"
+msgstr "Made by"
+
+#: .\templates\metal_calc\inc\_footer.html:3
+msgid "The theme is based on"
+msgstr "The theme is based on"
+
+#: .\templates\metal_calc\inc\_footer.html:3
+msgid "DNS hosting from"
+msgstr "DNS hosting from"
+
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:10
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:11
+msgid "Width a, mm"
+msgstr "Width a, mm"
+
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:17
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:18
+msgid "Height b, mm"
+msgstr "Height b, mm"
+
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:24
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:25
+msgid "Diameter d, mm"
+msgstr "Diameter d, mm"
+
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:31
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:32
+msgid "Thickness s, mm"
+msgstr "Thickness s, mm"
+
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:38
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:39
+msgid "Thickness s2, mm"
+msgstr "Thickness s2, mm"
+
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:45
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:46
+msgid "Number of sheets, pcs."
+msgstr "Number of sheets, pcs."
+
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:52
+#: .\templates\metal_calc\inc\_form-calculator-fields.html:53
+msgid "Length, m"
+msgstr "Length, m"
+
+#: .\templates\metal_calc\inc\_form-select-metals.html:17
+msgid "Metal alloy"
+msgstr "Metal alloy"
+
+#: .\templates\metal_calc\inc\_form-select-metals.html:19
+msgid "Other"
+msgstr "Other"
+
+#: .\templates\metal_calc\index.html:23
+msgid "Check that the data you entered is correct!"
+msgstr "Check that the data you entered is correct!"
+
+#: .\templates\metal_calc\index.html:27 .\templates\metal_calc\index.html:28
+msgid "Weight, kg"
+msgstr "Weight, kg"
+
+#: .\templates\metal_calc\index.html:33
+msgid "CALCULATE"
+msgstr "CALCULATE"

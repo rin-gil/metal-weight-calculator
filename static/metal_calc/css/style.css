@@ -401,3 +401,30 @@ fieldset {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(88, 92, 96, 0.5);
 }
+
+.locales-switcher {
+    text-align: right;
+}
+
+.locales-switcher .locale {
+    background: url("../img/locales-icon.png");
+    width: 24px;
+    height: 16px;
+    margin: 0 2px;
+}
+
+.locales-switcher .locale:disabled {
+    opacity: .3;
+}
+
+#en.locale {
+    background-position: 0 0;
+}
+
+#ru.locale {
+    background-position: 48px 0;
+}
+
+#uk.locale {
+    background-position: 24px 0;
+}

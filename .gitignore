@@ -10,3 +10,6 @@ venv/
 
 # Logs
 *.log
+
+# Cache
+cache/

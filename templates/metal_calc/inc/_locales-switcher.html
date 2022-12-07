@@ -5,7 +5,7 @@
         {% get_available_languages as LANGUAGES %}
         {% get_language_info_list for LANGUAGES as languages %}
         {% for language in languages %}
-            <button class="locale" id="{{ language.code }}" name="language" type="submit" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} disabled{% endif %}></button>
+            <button class="locale" id="{{ language.code }}" name="language" type="submit" title="{{ language.name_local }}" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} disabled{% endif %}></button>
         {% endfor %}
     </form>
 </div>

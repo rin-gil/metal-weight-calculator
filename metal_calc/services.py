@@ -33,6 +33,9 @@ class MetalCalculator:
     """Calculates the weight of the metal, depending on the parameters entered"""
 
     def __init__(self) -> None:
+        self.available_metal_shapes: tuple[str, ...] = tuple(map(str, MetalShape.objects.values_list("id", flat=True)))
+        self.available_metals: tuple[str, ...] = tuple(map(str, Metal.objects.values_list("id", flat=True)))
+        self.available_metal_alloys: tuple[str, ...] = tuple(map(str, MetalAlloy.objects.values_list("id", flat=True)))
         self.default_context_data: ContextData = {
             "metal_shape_selected": 1,
             "metal_selected": 1,
@@ -48,21 +51,21 @@ class MetalCalculator:
             "weight": "0.00",
         }
 
-    def _parse_shape(self, metal_shape: str | None) -> int:
+    def _parse_metal_shape(self, metal_shape: str | None) -> int:
         """Checks the correctness of the selected metal shape"""
-        if metal_shape in tuple(map(str, MetalShape.objects.values_list("id", flat=True))):
+        if metal_shape in self.available_metal_shapes:
             return int(metal_shape)
         return self.default_context_data["metal_shape_selected"]
 
     def _parse_metal_type(self, metal: str | None) -> int:
         """Checks the correctness of the selected metal type"""
-        if metal in tuple(map(str, Metal.objects.values_list("id", flat=True))):
+        if metal in self.available_metals:
             return int(metal)
         return self.default_context_data["metal_selected"]
 
     def _parse_metal_alloy(self, metal_alloy: str | None) -> int:
         """Checks the correctness of the selected metal alloy"""
-        if metal_alloy in tuple(map(str, MetalAlloy.objects.values_list("id", flat=True))):
+        if metal_alloy in self.available_metal_alloys:
             return int(metal_alloy)
         return self.default_context_data["metal_alloy_selected"]
 
@@ -182,7 +185,7 @@ class MetalCalculator:
 
     def get_context_data_for_calculator_fields(self, request: QueryDict, context: ContextData) -> ContextData:
         """Sets the values of the calculator fields based on the data entered by the user"""
-        metal_shape_selected: int = self._parse_shape(metal_shape=request.get("metal_shape"))
+        metal_shape_selected: int = self._parse_metal_shape(metal_shape=request.get("metal_shape"))
         metal_selected: int = self._parse_metal_type(metal=request.get("metal"))
         metal_alloy_selected: int = self._parse_metal_alloy(metal_alloy=request.get("metal_alloy"))
         context["metal_shape_selected"] = metal_shape_selected

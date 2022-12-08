@@ -6,7 +6,7 @@
 
 
 {% block main %}
-{% load static i18n %}
+    {% load i18n %}
     <main class="main card">
         {% include 'metal_calc/inc/_locales-switcher.html' %}
         {% get_site_info as site_info %}
@@ -21,20 +21,20 @@
                 {% include 'metal_calc/inc/_form-calculator-fields.html' %}
                 <br>
                 {% if error_message %}<p class="text-danger">{% trans "Check that the data you entered is correct!" %}</p><br>{% endif %}
-            <div class="container">
-                <div class="column_left">
-                    <div class="form-floating" id="r">
-                        <input id="weight" type="text" class="form-control" readonly placeholder="{% trans 'Weight, kg' %}" name="weight" value="{% if weight %}{{ weight }}{% else %}0.00{% endif %}" onFocus="this.select()">
-                        <label for="weight">{% trans "Weight, kg" %}</label>
+                <div class="container">
+                    <div class="column_left">
+                        <div class="form-floating" id="r">
+                            <input id="weight" type="text" class="form-control" readonly placeholder="{% trans 'Weight, kg' %}" name="weight" value="{% if weight %}{{ weight }}{% else %}0.00{% endif %}" onFocus="this.select()">
+                            <label for="weight">{% trans "Weight, kg" %}</label>
+                        </div>
                     </div>
-                </div>
-                <div class="column_right">
-                    <div class="form-floating">
-                        <button class="btn" form="calculator" type="submit">{% trans "CALCULATE" %}</button>
+                    <div class="column_right">
+                        <div class="form-floating">
+                            <button class="btn" form="calculator" type="submit">{% trans "CALCULATE" %}</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 {% endblock main %}

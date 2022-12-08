@@ -1,8 +1,5 @@
-{% load static %}{% spaceless %}
-{% load i18n %}
+{% load static i18n site_info %}{% spaceless %}
 {% get_current_language as LANGUAGE_CODE %}
-{% load static i18n %}
-{% load site_info %}
 {% get_site_info as site_info %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
@@ -13,7 +10,7 @@
     <meta http-equiv="refresh" content="5; url={% url 'home' %}">
     {% include 'metal_calc/inc/_favicons.html' %}
     <link type="text/css" rel="stylesheet" href="{% static 'metal_calc/css/reset.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'metal_calc/css/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'metal_calc/css/style.min.css' %}">
     <title>{% trans "Page not found" %}</title>
 </head>
 <body>

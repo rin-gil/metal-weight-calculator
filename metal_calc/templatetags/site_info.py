@@ -12,10 +12,10 @@ register: template.Library = template.Library()
 @register.simple_tag()
 def get_site_info() -> dict:
     """Returns information about the site"""
-    site: PageInfo = PageInfo.objects.get(pk=1)
+    site_info: PageInfo = PageInfo.objects.get(pk=1)
     return {
-        "title": site.title,
-        "description": site.description,
-        "keywords": site.keywords,
+        "title": site_info.title,
+        "description": site_info.description,
+        "keywords": site_info.keywords,
         "site_url": ALLOWED_HOSTS[0],
     }

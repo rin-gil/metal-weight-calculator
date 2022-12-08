@@ -1,4 +1,7 @@
-{% load metal_shapes %}
+{% load i18n cache cache_time metal_shapes %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_cache_timeout as cache_timeout %}
+{% cache cache_timeout header LANGUAGE_CODE %}
 {% get_metal_shapes as metal_shapes %}
 <header class="header">
     <nav>
@@ -11,3 +14,4 @@
         </ul>
     </nav>
 </header>
+{% endcache %}

@@ -1,7 +1,13 @@
 """The module describes the models used in the metal_calc application"""
 
+from typing import Any
+
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+from app.settings import LANGUAGES
 
 
 class PageInfo(models.Model):
@@ -12,7 +18,16 @@ class PageInfo(models.Model):
     keywords: str = models.CharField(max_length=250, verbose_name=_("Keywords"))
 
     def __str__(self) -> str:
-        return str(self.title)
+        return self.title
+
+    def save(self, *args: Any, **kwargs: Any) -> None:
+        for _ in LANGUAGES:
+            key: str = make_template_fragment_key(fragment_name="site_info", vary_on=[_[0]])
+            cache.delete(key)
+        for _ in LANGUAGES:
+            key = make_template_fragment_key(fragment_name="site_title", vary_on=[_[0]])
+            cache.delete(key)
+        super().save(*args, **kwargs)
 
     class Meta:
         """Defines the representation of the model in the program"""
@@ -28,7 +43,13 @@ class MetalShape(models.Model):
     shape_name: str = models.CharField(unique=True, max_length=20, db_index=True, verbose_name=_("Profile name"))
 
     def __str__(self) -> str:
-        return str(self.shape_name)
+        return self.shape_name
+
+    def save(self, *args: Any, **kwargs: Any) -> None:
+        for _ in LANGUAGES:
+            key: str = make_template_fragment_key(fragment_name="header", vary_on=[_[0]])
+            cache.delete(key)
+        super().save(*args, **kwargs)
 
     class Meta:
         """Defines the representation of the model in the program"""
@@ -45,7 +66,13 @@ class Metal(models.Model):
     density: int = models.SmallIntegerField(verbose_name=_("Metal density, kg/m³"))
 
     def __str__(self) -> str:
-        return str(self.metal_name)
+        return self.metal_name
+
+    def save(self, *args: Any, **kwargs: Any) -> None:
+        for _ in LANGUAGES:
+            key: str = make_template_fragment_key(fragment_name="form_select_metals", vary_on=[_[0]])
+            cache.delete(key)
+        super().save(*args, **kwargs)
 
     class Meta:
         """Defines the representation of the model in the program"""
@@ -63,7 +90,13 @@ class MetalAlloy(models.Model):
     density: int = models.SmallIntegerField(verbose_name=_("Alloy density, kg/m³"))
 
     def __str__(self) -> str:
-        return str(self.metal_alloy)
+        return self.metal_alloy
+
+    def save(self, *args: Any, **kwargs: Any) -> None:
+        for _ in LANGUAGES:
+            key: str = make_template_fragment_key(fragment_name="form_select_metals", vary_on=[_[0]])
+            cache.delete(key)
+        super().save(*args, **kwargs)
 
     class Meta:
         """Defines the representation of the model in the program"""

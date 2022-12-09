@@ -17,8 +17,8 @@ class ContextData(TypedDict):
     error_message: bool
     width: int
     height: int
-    s: int
-    s2: int
+    s: float
+    s2: float
     diameter: int
     quantity: int
     length: int
@@ -43,8 +43,8 @@ class MetalCalculator:
             "error_message": False,
             "width": 0,
             "height": 0,
-            "s": 0,
-            "s2": 0,
+            "s": 0.0,
+            "s2": 0.0,
             "diameter": 0,
             "quantity": 0,
             "length": 0,
@@ -70,17 +70,17 @@ class MetalCalculator:
         return self.default_context_data["metal_alloy_selected"]
 
     @staticmethod
-    def _parse_value(checked_value: str | None) -> int:
+    def _parse_value(checked_value: str | None) -> float:
         """Checks if the values entered by the user are correct"""
         if not checked_value:
             return 0
         try:
-            return int(checked_value)
+            return abs(float(checked_value))
         except (TypeError, ValueError):
-            return 0
+            return 0.0
 
     @staticmethod
-    def _calculate_volume_of_beam(width: int, height: int, s: int, s2: int, length: int) -> float:
+    def _calculate_volume_of_beam(width: int, height: int, s: float, s2: float, length: int) -> float:
         """Calculates beam volume"""
         if width < s2 or height < (s * 2):  # Check that the dimensions are correct
             raise ShapeDimensionsError
@@ -97,38 +97,38 @@ class MetalCalculator:
         return pi * diameter**2 / 4 / 1000000 * length
 
     @staticmethod
-    def _calculate_volume_of_sheet(width: int, height: int, s: int, quantity: int) -> float:
+    def _calculate_volume_of_sheet(width: int, height: int, s: float, quantity: int) -> float:
         """Calculates sheet volume"""
         return width * height / 1000000 * s * quantity / 1000
 
     @staticmethod
-    def _calculate_volume_of_flat_bar(width: int, s: int, length: int) -> float:
+    def _calculate_volume_of_flat_bar(width: int, s: float, length: int) -> float:
         """Calculates flat bar volume"""
         return width * length / 1000000 * s
 
     @staticmethod
-    def _calculate_volume_of_round_tube(diameter: int, s: int, length: int) -> float:
+    def _calculate_volume_of_round_tube(diameter: int, s: float, length: int) -> float:
         """Calculates round tube volume"""
         if diameter < s * 2:  # Check that the dimensions are correct
             raise ShapeDimensionsError
         return pi * (diameter**2 - (diameter - s * 2) ** 2) / 4 / 1000000 * length
 
     @staticmethod
-    def _calculate_volume_of_profile_tube(width: int, height: int, s: int, length: int) -> float:
+    def _calculate_volume_of_profile_tube(width: int, height: int, s: float, length: int) -> float:
         """Calculates profile tube volume"""
         if min(width, height) < s * 2:  # Check that the dimensions are correct
             raise ShapeDimensionsError
         return (width * height - (width - s * 2) * (height - s * 2)) / 1000000 * length
 
     @staticmethod
-    def _calculate_volume_of_metal_angle(width: int, height: int, s: int, length: int) -> float:
+    def _calculate_volume_of_metal_angle(width: int, height: int, s: float, length: int) -> float:
         """Calculates metal angle volume"""
         if min(width, height) < s:  # Check that the dimensions are correct
             raise ShapeDimensionsError
         return (width * s + (height - s) * s) / 1000000 * length
 
     @staticmethod
-    def _calculate_volume_of_metal_channel(width: int, height: int, s: int, length: int) -> float:
+    def _calculate_volume_of_metal_channel(width: int, height: int, s: float, length: int) -> float:
         """Calculates metal channel volume"""
         if width < s * 2 or height < s:  # Check that the dimensions are correct
             raise ShapeDimensionsError
@@ -143,8 +143,8 @@ class MetalCalculator:
         """Calculates the volume of metal shapes according to the data entered by user"""
         width: int = context["width"]
         height: int = context["height"]
-        s: int = context["s"]
-        s2: int = context["s2"]
+        s: float = context["s"]
+        s2: float = context["s2"]
         diameter: int = context["diameter"]
         quantity: int = context["quantity"]
         length: int = context["length"]
@@ -192,13 +192,13 @@ class MetalCalculator:
         context["metal_selected"] = metal_selected
         context["metal_alloy_selected"] = metal_alloy_selected
 
-        width: int = self._parse_value(checked_value=request.get("width"))
-        height: int = self._parse_value(checked_value=request.get("height"))
-        s: int = self._parse_value(checked_value=request.get("s"))
-        s2: int = self._parse_value(checked_value=request.get("s2"))
-        diameter: int = self._parse_value(checked_value=request.get("diameter"))
-        quantity: int = self._parse_value(checked_value=request.get("quantity"))
-        length: int = self._parse_value(checked_value=request.get("length"))
+        width: int = int(self._parse_value(checked_value=request.get("width")))
+        height: int = int(self._parse_value(checked_value=request.get("height")))
+        s: float = self._parse_value(checked_value=request.get("s"))
+        s2: float = self._parse_value(checked_value=request.get("s2"))
+        diameter: int = int(self._parse_value(checked_value=request.get("diameter")))
+        quantity: int = int(self._parse_value(checked_value=request.get("quantity")))
+        length: int = int(self._parse_value(checked_value=request.get("length")))
         context["width"] = width
         context["height"] = height
         context["s"] = s

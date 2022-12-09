@@ -48,7 +48,7 @@ ROOT_URLCONF: str = "app.urls"
 TEMPLATES: list = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [path.join(BASE_DIR, "metal_calc/templates")],
+        "DIRS": [path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

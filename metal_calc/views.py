@@ -30,7 +30,7 @@ class MetalCalcHomeView(TemplateView):
         return render(request=request, template_name=self.template_name, context=context)
 
 
-def page_not_found(request: WSGIRequest, exception: Resolver404) -> HttpResponse:
+def custom404(request: WSGIRequest, exception: Resolver404) -> HttpResponse:
     """Displays a 404 application error page"""
     context: dict = {"wrong_url": f"{exception.args[0]['path']}"}
-    return render(request=request, template_name="metal_calc/404.html", context=context, status=404)
+    return render(request=request, template_name="../templates/404.html", context=context, status=404)

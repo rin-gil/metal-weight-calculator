@@ -6,7 +6,7 @@ from django.urls import path, include
 
 from app.settings import DEBUG
 
-from metal_calc.views import page_not_found
+from metal_calc.views import custom404
 
 
 urlpatterns: list = i18n_patterns(
@@ -17,4 +17,4 @@ urlpatterns: list = i18n_patterns(
 if DEBUG:
     urlpatterns += [path("admin/", admin.site.urls)]
 
-handler404 = page_not_found
+handler404 = custom404

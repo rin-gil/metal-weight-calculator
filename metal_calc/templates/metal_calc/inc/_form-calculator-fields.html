@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load i18n %}
 <form id="calculator" method="POST">
     {% csrf_token %}
     <input form="calculator" type="hidden" name="metal_shape" value="{{ metal_shape_selected }}">

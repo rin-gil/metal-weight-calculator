@@ -48,7 +48,7 @@ ROOT_URLCONF: str = "app.urls"
 TEMPLATES: list = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [path.join(BASE_DIR, "templates")],
+        "DIRS": [path.join(BASE_DIR, "metal_calc/templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -116,7 +116,7 @@ USE_TZ: bool = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL: str = "/static/"
-STATICFILES_DIRS: list[str] = [path.join(BASE_DIR, "static/metal_calc")]
+STATICFILES_DIRS: list[str] = [path.join(BASE_DIR, "metal_calc/static")]
 STATIC_ROOT: str = path.join(BASE_DIR, "static")
 
 # Default primary key field type

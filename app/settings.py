@@ -111,7 +111,7 @@ LOCALE_PATHS: list[str] = [path.join(BASE_DIR, "locales")]
 MODELTRANSLATION_DEFAULT_LANGUAGE: str = LANGUAGE_CODE
 TIME_ZONE: str = "UTC"
 USE_I18N: bool = True
-USE_L10N: bool = True
+USE_L10N: bool = False
 USE_TZ: bool = True
 
 # Static files (CSS, JavaScript, Images)

@@ -15,4 +15,4 @@ venv/
 cache/
 
 # Static
-!/static/
+/static/

@@ -1,9 +1,6 @@
-{% load static i18n cache cache_time metals %}
+{% load i18n metals %}
 <form id="metals" method="POST">
     {% csrf_token %}
-    {% get_current_language as LANGUAGE_CODE %}
-    {% get_cache_timeout as cache_timeout %}
-    {% cache cache_timeout form_select_metals LANGUAGE_CODE %}
     {% get_metals as metals %}
     {% get_metal_alloys as metal_alloys %}
     <div class="container">
@@ -25,5 +22,4 @@
             </select>
         </div>
     </div>
-    {% endcache %}
 </form>

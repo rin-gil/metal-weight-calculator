@@ -45,12 +45,6 @@ class MetalShape(models.Model):
     def __str__(self) -> str:
         return self.shape_name
 
-    def save(self, *args: Any, **kwargs: Any) -> None:
-        for _ in LANGUAGES:
-            key: str = make_template_fragment_key(fragment_name="header", vary_on=[_[0]])
-            cache.delete(key)
-        super().save(*args, **kwargs)
-
     class Meta:
         """Defines the representation of the model in the program"""
 
@@ -67,12 +61,6 @@ class Metal(models.Model):
 
     def __str__(self) -> str:
         return self.metal_name
-
-    def save(self, *args: Any, **kwargs: Any) -> None:
-        for _ in LANGUAGES:
-            key: str = make_template_fragment_key(fragment_name="form_select_metals", vary_on=[_[0]])
-            cache.delete(key)
-        super().save(*args, **kwargs)
 
     class Meta:
         """Defines the representation of the model in the program"""
@@ -91,12 +79,6 @@ class MetalAlloy(models.Model):
 
     def __str__(self) -> str:
         return self.metal_alloy
-
-    def save(self, *args: Any, **kwargs: Any) -> None:
-        for _ in LANGUAGES:
-            key: str = make_template_fragment_key(fragment_name="form_select_metals", vary_on=[_[0]])
-            cache.delete(key)
-        super().save(*args, **kwargs)
 
     class Meta:
         """Defines the representation of the model in the program"""

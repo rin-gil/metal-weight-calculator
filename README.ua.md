@@ -32,17 +32,17 @@
 <p align="right">
     <a href="https://github.com/rin-gil/MetalWeightCalculator/blob/master/README.md">
         <img src="https://raw.githubusercontent.com/rin-gil/rin-gil/main/assets/img/icons/flags/united-kingdom_24x24.png" alt="En"></a>
-    <a href="https://github.com/rin-gil/MetalWeightCalculator/blob/master/README.ua.md">
-        <img src="https://raw.githubusercontent.com/rin-gil/rin-gil/main/assets/img/icons/flags/ukraine_24x24.png" alt="Ua">
+    <a href="https://github.com/rin-gil/MetalWeightCalculator/blob/master/README.ru.md">
+        <img src="https://raw.githubusercontent.com/rin-gil/rin-gil/main/assets/img/icons/flags/russia_24x24.png" alt="Ru">
     </a>
 </p>
 
-## Калькулятор веса металла
+## Калькулятор ваги металу
 
-Приложение выполняет расчет теоретического веса металлопроката, по данным введенным пользователем. Доступен выбор различных видов металлопроката, металлов и металлических сплавов.
-Опробовать приложение в работе можно на сайте [https://metal-calc.my.to](https://metal-calc.my.to)
+Додаток виконує розрахунок теоретичної ваги металопрокату, за даними введеними користувачем. Доступний вибір різних видів металопрокату, металів і металевих сплавів.
+Випробувати додаток у роботі можна на сайті [https://metal-calc.my.to](https://metal-calc.my.to)
 
-### Установка
+### Встановлення
 
 ```
 git clone https://github.com/rin-gil/MetalWeightCalculator.git
@@ -53,21 +53,21 @@ pip install -r requirements.txt
 mv .env.dist .env
 ```
 
-### Настройка и запуск
+### Налаштування та запуск
 
-* Запустите приложение командой `python3 manage.py runserver`
-* Приложение доступно в браузере по адресу: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+* Запустіть додаток командою `python3 manage.py runserver`
+* Додаток доступний у браузері за адресою: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-### Скриншоты
+### Скриншоти
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/rin-gil/rin-gil/main/assets/img/projects/MetalWeightCalculator/screenshot_ru.png" alt="Главный экран MetalWeightCalculator">
+    <img src="https://raw.githubusercontent.com/rin-gil/rin-gil/main/assets/img/projects/MetalWeightCalculator/screenshot_ua.png" alt="Головний екран MetalWeightCalculator">
 </p>
 
-### Разработчики
+### Розробники
 
 * [Ringil](https://github.com/rin-gil)
 
-### Лицензия
+### Ліцензія
 
-Проект Калькулятор веса металла распространяется по лицензии [MIT](https://github.com/rin-gil/MetalWeightCalculator/blob/master/LICENCE)
+Проєкт Калькулятор ваги металу поширюється за ліцензією [MIT](https://github.com/rin-gil/MetalWeightCalculator/blob/master/LICENCE)

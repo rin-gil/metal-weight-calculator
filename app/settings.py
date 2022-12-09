@@ -116,7 +116,7 @@ USE_TZ: bool = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL: str = "/static/"
-STATICFILES_DIRS: list[str] = [path.join(BASE_DIR, "static")]
+STATICFILES_DIRS: list[str] = [path.join(BASE_DIR, "static/metal_calc")]
 STATIC_ROOT: str = path.join(BASE_DIR, "static")
 
 # Default primary key field type

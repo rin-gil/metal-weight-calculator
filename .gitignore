@@ -13,6 +13,3 @@ venv/
 
 # Cache
 cache/
-
-# Static
-static/

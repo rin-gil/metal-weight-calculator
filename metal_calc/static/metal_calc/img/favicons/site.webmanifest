@@ -1,14 +1,14 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Metal Weight Calculator",
+    "short_name": "Metal Weight Calculator",
     "icons": [
         {
-            "src": "/img/android-chrome-192x192.png",
+            "src": "/static/metal_calc/img/favicons/img/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/img/android-chrome-512x512.png",
+            "src": "/static/metal_calc/img/favicons/img/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }

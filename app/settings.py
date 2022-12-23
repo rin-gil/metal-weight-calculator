@@ -94,7 +94,7 @@ LOGGING = {
             "level": "WARNING",
             "class": "logging.FileHandler",
             "formatter": "verbose",
-            "filename": BASE_DIR / "metalCalculator.log",
+            "filename": BASE_DIR / "log.log",
         },
     },
     "loggers": {"django": {"handlers": ["file"], "level": "INFO", "propagate": True}},

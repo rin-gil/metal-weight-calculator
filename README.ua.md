@@ -6,11 +6,11 @@
     <a href="https://www.python.org/downloads/release/python-3110/">
         <img src="https://img.shields.io/badge/python-v3.11-informational" alt="python version">
     </a>
-    <a href="https://pypi.org/project/Django/4.1.4/">
-        <img src="https://img.shields.io/badge/Django-v4.1.4-informational" alt="Django version">
+    <a href="https://pypi.org/project/Django/4.2/">
+        <img src="https://img.shields.io/badge/Django-v4.2-informational" alt="Django version">
     </a>
-    <a href="https://pypi.org/project/django-modeltranslation/0.18.7/">
-        <img src="https://img.shields.io/badge/django_modeltranslation-v0.18.7-informational" alt="gunicorn version">
+    <a href="https://pypi.org/project/django-modeltranslation/0.18.9/">
+        <img src="https://img.shields.io/badge/django_modeltranslation-v0.18.9-informational" alt="gunicorn version">
     </a>
     <a href="https://pypi.org/project/environs/9.5.0/">
         <img src="https://img.shields.io/badge/environs-v9.5.0-informational" alt="environs version">

@@ -249,3 +249,6 @@ cython_debug/
 
 # Cache
 cache/
+
+# Static files
+/static/

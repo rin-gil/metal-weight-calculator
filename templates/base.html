@@ -1,4 +1,4 @@
-{% load static i18n cache cache_time site_info %}{% spaceless %}
+{% load static i18n cache cache_time site_info %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_cache_timeout as cache_timeout %}
 {% get_site_info as site_info %}
@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     {% include 'metal_calc/inc/_favicons.html' %}
-    <link rel="preload" href="{% static 'metal_calc/js/script.min.js' %}" as="script">
-    <link rel="preload" href="{% static 'metal_calc/css/reset.min.css' %}" as="style">
-    <link rel="preload" href="{% static 'metal_calc/css/style.min.css' %}" as="style">
-    <link rel="stylesheet"  href="{% static 'metal_calc/css/reset.min.css' %}">
-    <link rel="stylesheet" href="{% static 'metal_calc/css/style.min.css' %}">
+    <link rel="preload" href="{% static 'metal_calc/js/script.js' %}" as="script">
+    <link rel="preload" href="{% static 'metal_calc/css/reset.css' %}" as="style">
+    <link rel="preload" href="{% static 'metal_calc/css/style.css' %}" as="style">
+    <link rel="stylesheet"  href="{% static 'metal_calc/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'metal_calc/css/style.css' %}">
     {% cache cache_timeout site_info LANGUAGE_CODE %}
     <meta name="description" content="{{ site_info.description }}">
     <meta name="keywords" content="{{ site_info.keywords }}">
@@ -46,4 +46,4 @@
 </div>
     <script src="{% static 'metal_calc/js/script.min.js' %}" defer></script>
 </body>
-</html>{% endspaceless %}
+</html>

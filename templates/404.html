@@ -1,4 +1,4 @@
-{% load static i18n site_info %}{% spaceless %}
+{% load static i18n site_info %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_site_info as site_info %}
 <!DOCTYPE html>
@@ -9,10 +9,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="refresh" content="5; url={% url 'home' %}">
     {% include 'metal_calc/inc/_favicons.html' %}
-    <link rel="preload" href="{% static 'metal_calc/css/reset.min.css' %}" as="style">
-    <link rel="preload" href="{% static 'metal_calc/css/style.min.css' %}" as="style">
-    <link type="text/css" rel="stylesheet" href="{% static 'metal_calc/css/reset.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'metal_calc/css/style.min.css' %}">
+    <link rel="preload" href="{% static 'metal_calc/css/reset.css' %}" as="style">
+    <link rel="preload" href="{% static 'metal_calc/css/style.css' %}" as="style">
+    <link type="text/css" rel="stylesheet" href="{% static 'metal_calc/css/reset.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'metal_calc/css/style.css' %}">
     <title>{% trans "Page not found" %}</title>
 </head>
 <body>
@@ -24,4 +24,4 @@
     </div>
 </div>
 </body>
-</html>{% endspaceless %}
+</html>

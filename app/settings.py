@@ -129,4 +129,4 @@ CACHES: dict = {
         "LOCATION": path.join(BASE_DIR, "cache"),
     }
 }
-CACHE_TIMEOUT: int = 604800
+CACHE_TIMEOUT: int = 0 if DEBUG else 604800

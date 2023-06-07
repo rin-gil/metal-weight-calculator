@@ -40,7 +40,6 @@
 ## Metal Weight Calculator
 
 The application performs the calculation of the theoretical weight of rolled steel, based on the data entered by the user. A selection of different types of rolled metal products, metals and metal alloys is available.
-To try out the application, visit [https://metal-calc.my.to](https://metal-calc.my.to)
 
 ### Installing
 
